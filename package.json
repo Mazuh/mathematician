@@ -1,0 +1,46 @@
+{
+  "name": "mathematician",
+  "version": "0.1.0",
+  "description": "Arithmetical expressions parser for Elm and JavaScript",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "jest tests/*.test.js",
+    "test:watch": "jest tests/*.test.js --watch",
+    "lint": "eslint --max-warnings 0 ./src/"
+  },
+  "pre-commit": [
+    "lint-on-rewritten"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mazuh/mathematician.git"
+  },
+  "keywords": [
+    "arithmetics",
+    "math",
+    "parser",
+    "gramatic"
+  ],
+  "author": "mazuh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mazuh/mathematician/issues"
+  },
+  "homepage": "https://github.com/Mazuh/mathematician#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.24.1",
+    "jest": "^24.7.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
