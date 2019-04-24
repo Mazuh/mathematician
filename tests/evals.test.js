@@ -56,4 +56,14 @@ describe('evalPostfix', () => {
     expect(evalPostfix('1 1+')).toBe(2);
     expect(evalPostfix('1 1+1+')).toBe(3);
   });
+
+  it('throws error in case of an operator finding insufficient numbers in queue', () => {
+    expect(() => evalPostfix('11+')).toThrow('Expected more numbers for binary operator');
+    expect(() => evalPostfix('+')).toThrow('Expected more numbers for binary operator');
+  });
+
+  it('doesnt get confused with directional tokens similars to operator', () => {
+    expect(evalPostfix('-2 2 +')).toBe(0);
+    expect(evalPostfix('-2 +2 +')).toBe(0);
+  });
 });

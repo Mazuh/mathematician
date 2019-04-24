@@ -111,4 +111,17 @@ describe('parseExpression', () => {
       { type: SYMBOL_TYPE.SUM, value: null },
     ]);
   });
+
+  it('doesnt get confused with directional tokens similars to operator', () => {
+    expect(parseExpression('-2 2 +')).toEqual([
+      { type: SYMBOL_TYPE.NUMBER, value: -2 },
+      { type: SYMBOL_TYPE.NUMBER, value: 2 },
+      { type: SYMBOL_TYPE.SUM, value: null },
+    ]);
+    expect(parseExpression(' -2 2 +')).toEqual([
+      { type: SYMBOL_TYPE.NUMBER, value: -2 },
+      { type: SYMBOL_TYPE.NUMBER, value: 2 },
+      { type: SYMBOL_TYPE.SUM, value: null },
+    ]);
+  });
 });
