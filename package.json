@@ -27,7 +27,9 @@
     "url": "https://github.com/Mazuh/mathematician/issues"
   },
   "homepage": "https://github.com/Mazuh/mathematician#readme",
-  "dependencies": {},
+  "dependencies": {
+    "lodash.reduce": "^4.6.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
