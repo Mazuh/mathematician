@@ -8,9 +8,6 @@
     "test:watch": "jest tests/*.test.js --watch",
     "lint": "eslint --max-warnings 0 ./src/"
   },
-  "pre-commit": [
-    "lint-on-rewritten"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mazuh/mathematician.git"
