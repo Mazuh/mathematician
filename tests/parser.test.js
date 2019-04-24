@@ -11,11 +11,13 @@ describe('parseSymbol', () => {
   });
 
   it('parses number', () => {
+    expect(parseSymbol('-3.14')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: -3.14 });
     expect(parseSymbol('-69')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: -69 });
     expect(parseSymbol('-1')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: -1 });
     expect(parseSymbol('0')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: 0 });
     expect(parseSymbol('1')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: 1 });
     expect(parseSymbol('69')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: 69 });
+    expect(parseSymbol('1.1')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: 1.1 });
   });
 
   it('parses operator', () => {
@@ -23,6 +25,12 @@ describe('parseSymbol', () => {
     expect(parseSymbol('-')).toEqual({ type: SYMBOL_TYPE.SUBSTRACTION, value: null });
     expect(parseSymbol('*')).toEqual({ type: SYMBOL_TYPE.MULTIPLICATION, value: null });
     expect(parseSymbol('/')).toEqual({ type: SYMBOL_TYPE.DIVISION, value: null });
+  });
+
+  it('also considers comma as a decimal separator', () => {
+    expect(parseSymbol('3,14')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: 3.14 });
+    expect(parseSymbol('-3,14')).toEqual({ type: SYMBOL_TYPE.NUMBER, value: -3.14 });
+    expect(parseSymbol('3,1,4')).toEqual(null);
   });
 });
 

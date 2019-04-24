@@ -10,6 +10,11 @@ export const BLANK_CHARSET = new Set([
   ' ',
 ]);
 
+export const DECIMAL_SEPARATOR_CHARSET = new Set([
+  ',',
+  '.',
+]);
+
 export const NUMERIC_CHARSET = new Set([
   '0',
   '1',
