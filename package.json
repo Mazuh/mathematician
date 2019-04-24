@@ -4,7 +4,7 @@
   "description": "Arithmetical expressions parser for Elm and JavaScript",
   "main": "./src/index.js",
   "scripts": {
-    "test": "jest tests/*.test.js",
+    "test": "jest tests/*.test.js --collect-coverage",
     "test:watch": "jest tests/*.test.js --watch",
     "lint": "eslint --max-warnings 0 ./src/"
   },
