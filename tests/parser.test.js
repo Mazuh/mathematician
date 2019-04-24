@@ -74,8 +74,21 @@ describe('parseExpression', () => {
     ]);
   });
 
+  it('returns list of interpreted numbers with mixed decimal separator', () => {
+    expect(parseExpression(' 3.14 ')).toEqual([
+      { type: SYMBOL_TYPE.NUMBER, value: 3.14 },
+    ]);
+    expect(parseExpression('3,14')).toEqual([
+      { type: SYMBOL_TYPE.NUMBER, value: 3.14 },
+    ]);
+    expect(parseExpression(' 3,14 ')).toEqual([
+      { type: SYMBOL_TYPE.NUMBER, value: 3.14 },
+    ]);
+    expect(() => parseExpression('3,1,4')).toThrow('3');
+  });
+
   it('returns list of interpreted mixed symbols and numbers', () => {
-    expect(parseExpression('1 1 + 2 + 3 / 5 * 8 -')).toEqual([
+    expect(parseExpression('1 1 + 2  + 3 /    5 * 8 -    3,14')).toEqual([
       { type: SYMBOL_TYPE.NUMBER, value: 1 },
       { type: SYMBOL_TYPE.NUMBER, value: 1 },
       { type: SYMBOL_TYPE.SUM, value: null },
@@ -87,6 +100,7 @@ describe('parseExpression', () => {
       { type: SYMBOL_TYPE.MULTIPLICATION, value: null },
       { type: SYMBOL_TYPE.NUMBER, value: 8 },
       { type: SYMBOL_TYPE.SUBSTRACTION, value: null },
+      { type: SYMBOL_TYPE.NUMBER, value: 3.14 },
     ]);
   });
 });

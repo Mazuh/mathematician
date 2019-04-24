@@ -10,6 +10,8 @@ export const BLANK_CHARSET = new Set([
   ' ',
 ]);
 
+export const DECIMAL_SEPARATOR_REGEX = /(,|\.)/;
+
 export const DECIMAL_SEPARATOR_CHARSET = new Set([
   ',',
   '.',

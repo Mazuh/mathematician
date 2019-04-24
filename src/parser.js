@@ -4,6 +4,8 @@ import {
   OPERATIONS_CHARSET,
   NUMERIC_CHARSET,
   BLANK_CHARSET,
+  DECIMAL_SEPARATOR_CHARSET,
+  DECIMAL_SEPARATOR_REGEX,
 } from './grammar';
 
 /**
@@ -16,7 +18,7 @@ export const parseSymbol = (substring) => {
     return null;
   }
 
-  const numeric = Number(substring.replace(',', '.'));
+  const numeric = Number(substring.replace(DECIMAL_SEPARATOR_REGEX, '.'));
   switch (substring) {
     case '+':
       return { type: SYMBOL_TYPE.SUM, value: null };
@@ -41,6 +43,7 @@ export const parseExpression = expression => reduce(expression, (accumulator, ch
   const { buffer, parseds } = accumulator;
   const isOperation = OPERATIONS_CHARSET.has(char);
   const isNumeric = NUMERIC_CHARSET.has(char);
+  const isDecimalSeparator = DECIMAL_SEPARATOR_CHARSET.has(char);
   const isBlank = BLANK_CHARSET.has(char);
 
   if (isOperation) {
@@ -48,10 +51,15 @@ export const parseExpression = expression => reduce(expression, (accumulator, ch
     return { buffer: '', parseds: [...parseds, symbol] };
   }
 
-  if (isNumeric) {
+  if (isNumeric || isDecimalSeparator) {
+    const currentBuffer = buffer + char;
+    if (isDecimalSeparator && DECIMAL_SEPARATOR_REGEX.test(buffer)) {
+      throw new Error(index);
+    }
+
     return index === (expression.length - 1)
-      ? { buffer: '', parseds: [...parseds, parseSymbol(buffer + char)] }
-      : { buffer: buffer + char, parseds };
+      ? { buffer: '', parseds: [...parseds, parseSymbol(currentBuffer)] }
+      : { buffer: currentBuffer, parseds };
   }
 
   if (isBlank) {
