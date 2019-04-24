@@ -2,7 +2,7 @@ import { parseSymbol, parseExpression } from '../src/parser';
 import { SYMBOL_TYPE } from '../src/grammar';
 
 describe('parseSymbol', () => {
-  it('not parse invalid symbols, returning null instead', () => {
+  it('not parse invalid symbol, returning null instead', () => {
     expect(parseSymbol('garbage')).toBe(null);
     expect(parseSymbol('?')).toBe(null);
     expect(parseSymbol('x')).toBe(null);
