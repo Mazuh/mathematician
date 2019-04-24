@@ -23,7 +23,7 @@ export const parseSymbol = (substring) => {
     case '+':
       return { type: SYMBOL_TYPE.SUM, value: null };
     case '-':
-      return { type: SYMBOL_TYPE.SUBSTRACTION, value: null };
+      return { type: SYMBOL_TYPE.SUBTRACTION, value: null };
     case '*':
       return { type: SYMBOL_TYPE.MULTIPLICATION, value: null };
     case '/':
@@ -37,7 +37,7 @@ export const parseSymbol = (substring) => {
  * Parse all symbols of an arithmetical expression.
  * @param {String} expression text containing possible symbols
  * @returns {Array} of parsed symbols
- * @throws {Error} where messaging the index of where an invalid token was found
+ * @throws {Error} messaging the index of where an invalid token was found
  */
 export const parseExpression = expression => reduce(expression, (accumulator, char, index) => {
   const { buffer, parseds } = accumulator;

@@ -22,7 +22,7 @@ describe('parseSymbol', () => {
 
   it('parses operator', () => {
     expect(parseSymbol('+')).toEqual({ type: SYMBOL_TYPE.SUM, value: null });
-    expect(parseSymbol('-')).toEqual({ type: SYMBOL_TYPE.SUBSTRACTION, value: null });
+    expect(parseSymbol('-')).toEqual({ type: SYMBOL_TYPE.SUBTRACTION, value: null });
     expect(parseSymbol('*')).toEqual({ type: SYMBOL_TYPE.MULTIPLICATION, value: null });
     expect(parseSymbol('/')).toEqual({ type: SYMBOL_TYPE.DIVISION, value: null });
   });
@@ -51,7 +51,7 @@ describe('parseExpression', () => {
   it('returns list of interpreted operators', () => {
     expect(parseExpression('+ - * /')).toEqual([
       { type: SYMBOL_TYPE.SUM, value: null },
-      { type: SYMBOL_TYPE.SUBSTRACTION, value: null },
+      { type: SYMBOL_TYPE.SUBTRACTION, value: null },
       { type: SYMBOL_TYPE.MULTIPLICATION, value: null },
       { type: SYMBOL_TYPE.DIVISION, value: null },
     ]);
@@ -99,7 +99,7 @@ describe('parseExpression', () => {
       { type: SYMBOL_TYPE.NUMBER, value: 0.57 },
       { type: SYMBOL_TYPE.MULTIPLICATION, value: null },
       { type: SYMBOL_TYPE.NUMBER, value: 8 },
-      { type: SYMBOL_TYPE.SUBSTRACTION, value: null },
+      { type: SYMBOL_TYPE.SUBTRACTION, value: null },
       { type: SYMBOL_TYPE.NUMBER, value: 3.14 },
     ]);
   });
