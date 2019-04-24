@@ -47,8 +47,11 @@ export const parseExpression = expression => reduce(expression, (accumulator, ch
   const isBlank = BLANK_CHARSET.has(char);
 
   if (isOperation) {
+    const bufferedSymbol = parseSymbol(buffer);
     const symbol = parseSymbol(char);
-    return { buffer: '', parseds: [...parseds, symbol] };
+    return bufferedSymbol
+      ? { buffer: '', parseds: [...parseds, bufferedSymbol, symbol] }
+      : { buffer: '', parseds: [...parseds, symbol] };
   }
 
   if (isNumeric || isDecimalSeparator) {

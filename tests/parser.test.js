@@ -103,4 +103,12 @@ describe('parseExpression', () => {
       { type: SYMBOL_TYPE.NUMBER, value: 3.14 },
     ]);
   });
+
+  it('doesnt care if there arent blank spaces between numbers and operators', () => {
+    expect(parseExpression('1 1+')).toEqual([
+      { type: SYMBOL_TYPE.NUMBER, value: 1 },
+      { type: SYMBOL_TYPE.NUMBER, value: 1 },
+      { type: SYMBOL_TYPE.SUM, value: null },
+    ]);
+  });
 });

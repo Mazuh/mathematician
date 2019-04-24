@@ -51,4 +51,9 @@ describe('evalRPN', () => {
     expect(evalRPN('1 1 2 + + 4 *')).toBe(16);
     expect(evalRPN('1 1 2 + 4 + *')).toBe(7);
   });
+
+  it('evals if there arent blank spaces between numbers and operators', () => {
+    expect(evalRPN('1 1+')).toBe(2);
+    expect(evalRPN('1 1+1+')).toBe(3);
+  });
 });
