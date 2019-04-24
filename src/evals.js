@@ -6,8 +6,8 @@ import { parseExpression } from './parser';
 import { SYMBOL_TYPE } from './grammar';
 
 /**
- * Parse a meaningful symbol (may be an operator or a number).
- * @param {String} expression arithmetical expression using reverse polish notation
+ * Evaluates an arithmetical expression that follows postfix (reverse polish) notation.
+ * @param {String} expression arithmetical expression using postfix notation
  * @returns {Number} resulting of the evaluated expression
  * @throws {Error} messaging the index of where an invalid token was found
  */
