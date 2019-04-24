@@ -88,7 +88,7 @@ describe('parseExpression', () => {
   });
 
   it('returns list of interpreted mixed symbols and numbers', () => {
-    expect(parseExpression('1 1 + 2  + 3 /    5 * 8 -    3,14')).toEqual([
+    expect(parseExpression('1 1 + 2  + 3 /    0.57 * 8 -    3,14')).toEqual([
       { type: SYMBOL_TYPE.NUMBER, value: 1 },
       { type: SYMBOL_TYPE.NUMBER, value: 1 },
       { type: SYMBOL_TYPE.SUM, value: null },
@@ -96,7 +96,7 @@ describe('parseExpression', () => {
       { type: SYMBOL_TYPE.SUM, value: null },
       { type: SYMBOL_TYPE.NUMBER, value: 3 },
       { type: SYMBOL_TYPE.DIVISION, value: null },
-      { type: SYMBOL_TYPE.NUMBER, value: 5 },
+      { type: SYMBOL_TYPE.NUMBER, value: 0.57 },
       { type: SYMBOL_TYPE.MULTIPLICATION, value: null },
       { type: SYMBOL_TYPE.NUMBER, value: 8 },
       { type: SYMBOL_TYPE.SUBSTRACTION, value: null },
