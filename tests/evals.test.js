@@ -71,4 +71,8 @@ describe('evalPostfix', () => {
     expect(evalPostfix('1')).toBe(1);
     expect(evalPostfix('  42  ')).toBe(42);
   });
+
+  it('handles multiple numbers including some with mixed decimal dividers', () => {
+    expect(evalPostfix('4 2 * 3.14 7 * - 9 11 * / 1,5 +')).toBe((((4 * 2) - (3.14 * 7)) / (9 * 11)) + 1.5);
+  });
 });
