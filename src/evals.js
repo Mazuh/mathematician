@@ -38,6 +38,6 @@ export default expression => last(reduce(parseExpression(expression), (numbers, 
         return [...remainings, a / b];
       }
     default:
-      throw new Error('Bad programming: unexpected parsed operator');
+      throw new Error('Bad programming: unexpected parsed symbol');
   }
 }, [])) || 0;
