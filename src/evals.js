@@ -10,6 +10,7 @@ import { SYMBOL_TYPE } from './grammar';
  * @param {String} expression arithmetical expression using postfix notation
  * @returns {Number} resulting of the evaluated expression
  * @throws {Error} messaging the index of where an invalid token was found
+ * or messaging some inconsistente usage of arithmetics.
  */
 export default expression => last(reduce(parseExpression(expression), (numbers, symbol) => {
   if (symbol.type === SYMBOL_TYPE.NUMBER) {
