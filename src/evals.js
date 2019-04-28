@@ -12,8 +12,13 @@ import { SYMBOL_TYPE } from './syntax';
  * @throws {Error} messaging the index of where an invalid token was found
  * or messaging some inconsistente usage of arithmetics.
  */
-export default expression => last(reduce(parseExpression(expression), (numbers, symbol) => {
+export default expression => last(reduce(parseExpression(expression), (numbers, symbol, index, symbols) => {
   if (symbol.type === SYMBOL_TYPE.NUMBER) {
+    const isLast = index === (symbols.length - 1);
+    if (isLast && numbers.length) {
+      throw new Error('Unexpected end of expression');
+    }
+
     return [...numbers, symbol.value];
   }
 

@@ -62,6 +62,10 @@ describe('evalPostfix', () => {
     expect(() => evalPostfix('+')).toThrow('Expected more numbers for binary operator');
   });
 
+  it('throws error if has more numbers than it should', () => {
+    expect(() => evalPostfix('5 8')).toThrow('Unexpected end of expression');
+  });
+
   it('doesnt get confused with directional tokens similars to operator', () => {
     expect(evalPostfix('-2 2 +')).toBe(0);
     expect(evalPostfix('-2 +2 +')).toBe(0);
