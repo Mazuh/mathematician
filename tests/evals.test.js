@@ -66,4 +66,9 @@ describe('evalPostfix', () => {
     expect(evalPostfix('-2 2 +')).toBe(0);
     expect(evalPostfix('-2 +2 +')).toBe(0);
   });
+
+  it('behaves as an identity function if a single number is given', () => {
+    expect(evalPostfix('1')).toBe(1);
+    expect(evalPostfix('  42  ')).toBe(42);
+  });
 });
