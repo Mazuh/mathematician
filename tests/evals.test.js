@@ -76,6 +76,13 @@ describe('evalPostfix', () => {
     expect(evalPostfix('  42  ')).toBe(42);
   });
 
+  it('behaves as a constant null function if no value is provided', () => {
+    expect(evalPostfix('')).toBe(0);
+    expect(evalPostfix('  ')).toBe(0);
+    expect(evalPostfix(' 0 ')).toBe(0);
+    expect(evalPostfix('0')).toBe(0);
+  });
+
   it('handles multiple numbers including some with mixed decimal dividers', () => {
     expect(evalPostfix('4 2 * 3.14 7 * - 9 11 * / 1,5 +')).toBe((((4 * 2) - (3.14 * 7)) / (9 * 11)) + 1.5);
   });
