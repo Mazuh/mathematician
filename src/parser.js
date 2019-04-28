@@ -6,7 +6,7 @@ import {
   BLANK_CHARSET,
   DECIMAL_SEPARATOR_CHARSET,
   DECIMAL_SEPARATOR_REGEX,
-} from './grammar';
+} from './syntax';
 
 /**
  * Parse a meaningful symbol (may be an operator or a number).

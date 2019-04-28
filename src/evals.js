@@ -3,7 +3,7 @@ import takeRight from 'lodash.takeright';
 import dropRight from 'lodash.dropright';
 import reduce from 'lodash.reduce';
 import { parseExpression } from './parser';
-import { SYMBOL_TYPE } from './grammar';
+import { SYMBOL_TYPE } from './syntax';
 
 /**
  * Evaluates an arithmetical expression that follows postfix (reverse polish) notation.

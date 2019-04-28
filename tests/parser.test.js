@@ -1,5 +1,5 @@
 import { parseSymbol, parseExpression } from '../src/parser';
-import { SYMBOL_TYPE } from '../src/grammar';
+import { SYMBOL_TYPE } from '../src/syntax';
 
 describe('parseSymbol', () => {
   it('not parse invalid symbol, returning null instead', () => {
